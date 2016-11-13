@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Shared/_Layout.cshtml";
+    PageData["Title"] = "Our Suggestions";
+
+}
+<div id="suggestions">
+    @{
+        Random _r = new Random();
+        var db = new foodie.Model();
+        List<int> f = new List<int>(3);
+        for (int i = 0; i < 3; i++)
+        {
+            f.Add(_r.Next(db.recipes.Count()));
+            if (i > 0 && f[i] == f[i - 1])
+            {
+                if (i > db.recipes.Count() / 2)
+                {
+                    f.RemoveAt(i);
+                    f.Add(_r.Next(0, i));
+                }
+                else
+                {
+                    f.RemoveAt(i);
+                    f.Add(_r.Next(i + 1, db.recipes.Count()));
+                }
+            }
+            if (i > 1 && (f[i] == f[i - 1] || f[i] == f[i - 2]))
+            {
+
+                if (i > db.recipes.Count() / 2)
+                {
+                    f.RemoveAt(i);
+                    f.Add(_r.Next(0, i));
+                }
+                else
+                {
+                    f.RemoveAt(i);
+                    f.Add(_r.Next(i + 1, db.recipes.Count()));
+                }
+            }
+            var reci = @db.recipes.ToList();
+            <h2>@reci[f[i]].name</h2>
+            <img src="~/Shared/@(reci[f[i]].photo)" alt="Photo">
+            <p>@reci[f[i]].instructions</p>
+        }
+
+    }
+</div>

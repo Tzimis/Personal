@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Shared/_Layout.cshtml";
+    PageData["Title"] = "Upload your recipe";
+}
+<div id="upload">
+    <h2>Upload your recipe</h2>
+    <form action="" method="post" >
+        Name of the recipe:
+        <input type="text" id="newName" name="newName" />
+        Region:
+        <input type="text" id="newRegion" name="newRegion" />
+        How much money does this recipe costs?
+        <input type="number" id="money" name="money"/>
+        Attach a photo
+        <input type="text" id="photo" name="photo"/>
+        <label for="content">Instructions:</label>
+        @Html.TextArea("post_content", new Dictionary<string, string>() { { "id", "content" } })
+        
+        <input type="submit" value="Submit" />
+    </form>
+</div>
+ @{
+     if (IsPost)
+     {
+         var db = new foodie.Model();
+
+         var requestMoney = Request["money"];
+
+         if (requestMoney.IsDecimal())
+         {
+
+             string Region = Request.Form["newRegion"];
+             <p>@Region</p>
+                 int idNewRegion = db.regions2.Where(x => x.Name == Region).ToList()[0].IDregions;
+                 if (idNewRegion != 0)
+                 {
+                     var recipe = new foodie.recipes
+                     {
+                         name = Request["newName"],
+                         timeNeeded = requestMoney.AsDecimal(),
+                         IDfrom = idNewRegion,
+                         instructions = WebUtility.HtmlEncode(Request.Unvalidated["post_content"]),
+                         photo = Request["photo"],
+                     };
+                     db.recipes.Add(recipe);
+                     db.SaveChanges();
+                 }
+             }
+
+
+         }
+
+
+
+     }

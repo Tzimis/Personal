@@ -1,0 +1,36 @@
+﻿
+
+@{
+    Layout = "~/Shared/_Layout.cshtml";
+    PageData["Title"] = "Home";
+}
+<div>
+    <h2>About Us</h2>
+    <p>>Besides all my naughty tales in Destination Poon, one of the most memorable aspect of travel for me is food. I’m talking about the luxury to taste all those new foods around the world, broaden your culinary horizon, and calibrate your taste buds.
+    Yesterday a thought hit me when I was organizing my travel albums, and that thought manifested today into what you’re reading right now.</p>
+    <p>
+        Welcome to Deliciously Ella.<br /> This blog lies at the heart of everything I do; it’s where my love of food, cooking and taking care of myself started,
+        and where I laid the foundations to start building a business within this space.
+        <br />I started writing it in 2012, it’s grown and evolved massively over
+        that time and along the way it’s created a community of like-minded people that I absolutely love, so I hope you enjoy what you find here too.
+    </p>
+    <p>
+        To give you a little history on me, the blog and why I do what I do, this whole journey started as a reaction to an illness that I was diagnosed with in 2011,
+        called Postural Tachycardia Syndrome.<br /> The illness had a pretty devastating effect on my life, both mentally and physically. Physically, my autonomic nervous system
+        struggled to function properly which meant that I couldn’t control my heart rate and blood pressure properly (my heart rate would go from about 60 when I was sitting
+        to 180 or so as soon as I stood up!), I also had a whole host of other issues form terrible stomach problems to constant headaches, lots of allergic reactions and chronic fatigue – so I spent almost all my time on my own in bed. I had just turned twenty at this point, and I felt so alienated from my friends, I really struggled to get my head around what was happening and I cut myself off from everyone and allowed myself to sink into an incredibly unhappy place. I was taking a lot of medication, but sadly it didn’t do much for me.
+    </p>
+</div>
+<aside>
+    @{
+        <h2>One recipe to start the trip</h2>
+        Random _r = new Random();
+        var db = new foodie.Model();
+        int f = _r.Next(db.recipes.Count()) + 1;
+        var rec = db.recipes.First(x => x.IDRecipes == f);
+        <p>@rec.name</p>
+        <p>@rec.instructions</p>
+        <img src="~/Shared/@rec.photo" />
+        <a href="~/Suggestions.cshtml">More Suggestions...</a>
+    }
+</aside>

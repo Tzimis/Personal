@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Shared/_Layout.cshtml";
+    PageData["Title"] = "Region Search";
+    var db = new foodie.Model();
+    var regionNameList = db.regions2.Select(x => x.Name).ToList();
+    var regionList = db.regions2.Select(x => x).ToList();
+}
+
+
+
+<div>
+    <h2>Search by region</h2>
+    <form action="" method="post">
+        What's the region that you want to search for traditional recipes?
+        <label for="myRegions"></label>
+        <input type="text" id="myRegions" name="myRegions" list="myPropositions" typeof="search" />
+        <datalist id="myPropositions">
+            @{
+                foreach (var li in regionNameList)
+                {
+                    <option>@li</option>
+                }
+            }
+        </datalist>
+
+        <p id="question">What's the maximum cost of recipe you want?</p>
+        <input type="number" name="time" />
+        <input type="submit" value="Submit" />
+    </form>
+
+    <div id="Search_ansewrs">
+        @{
+            List<string> recipestoPost = new List<string>();
+            if (Request.Form["time"].IsDecimal())
+            {
+                int a = Request.Form["time"].AsInt();
+                var recipesList = db.recipes.Where(x => x.timeNeeded <= a).ToList();
+                foreach (var rec in recipesList)
+                {
+                    foreach (var reg in regionList)
+                    {
+
+                        if (reg.Name == Request.Form["myRegions"] && reg.IDregions == rec.IDfrom)
+                        {
+
+                            <h2>@rec.name</h2>
+                            <p>@Html.Raw(WebUtility.HtmlDecode(rec.instructions))</p>
+                            <img src="~/Shared/@(rec.photo)" alt="Photo">
+                        }
+                    }
+                }
+
+            }
+        }
+    </div>
+</div>
