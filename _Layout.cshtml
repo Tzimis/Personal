@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@PageData["Title"]</title>
+    <link rel="stylesheet" href="~/css/Style.css" />
+</head>
+<body>
+     
+    @RenderPage("~/Shared/_Header.cshtml")
+    <main>
+        @RenderBody()
+    </main>
+    @RenderPage("~/Shared/_Footer.cshtml")
+
+
+</body>
+</html>
+

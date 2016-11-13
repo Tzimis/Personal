@@ -1,0 +1,145 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Neuton );
+ 
+@font-face {
+    font-family: 'EpikefalidasFont'; 
+    src: url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah'); 
+}
+
+html {
+    box-sizing: border-box;
+} 
+ul{
+    list-style:none;
+}
+h1
+{
+    font-family:'EpikefalidasFont';
+    font-size:500%;
+    display:flex;
+    margin-left:20px;
+    text-align:center;
+    flex-direction:column;
+    justify-content:center;
+   }
+h2{
+    margin-top:10px;
+    text-align:center;
+}
+main
+{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+}
+body {
+    display:flex;
+    font-family: 'Neuton', sans-serif;
+    background-image:url("background3.png");
+    flex-direction:column;
+    
+}
+#background{
+    width:100%;
+    height:100%;
+}
+header {
+    display: flex;
+    justify-content:center;        
+    flex-direction:row;
+    background-image:url("taco.png");
+}
+
+#upload form{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:space-around;
+
+}
+#menu_header
+{
+   display: flex;
+   flex-direction:column;
+   justify-content:space-around;
+align-items: center;
+}
+
+#menu_header nav ul li
+{
+    margin-left:5px;
+    margin-right:5px;
+    color:black;
+    font-size:150%;
+       
+}
+
+
+#menu li
+{color:#000000;
+margin-left:10px;
+}
+aside{
+    display: flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-right:5px;
+    margin-left:40px;
+    border-left:1px solid #272941;
+    border-right:1px solid #272941;
+}
+#suggestions{
+    display: flex;
+    flex-direction:column;
+    justify-content:space-around;
+    align-items:center;   
+}
+
+#Search_ansewrs{
+    display:flex;
+    margin-left:5px; 
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;    
+}
+#Search_ansewrs img
+{
+    height:400px;
+    width:400px;
+}
+
+header img
+{
+    margin-right:0;
+    margin-left:0;
+    height:100px;
+    width:100px;
+}
+aside img
+{
+    width:200px;
+    height:200px;
+} 
+#suggestions img
+{
+    width:400px;
+    height:400px;
+} 
+
+p
+{   
+   text-align:justify;
+ }
+
+header ul {
+    display: flex;
+    list-style:none;
+}
+#footer{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-end; 
+}
